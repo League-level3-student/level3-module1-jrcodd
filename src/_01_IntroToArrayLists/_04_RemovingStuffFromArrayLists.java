@@ -35,47 +35,57 @@ public class _04_RemovingStuffFromArrayLists {
 		System.out.println(stuffIFoundInTheYard.size());
 
 		/* TODO 1: Clean out the dirt but keep the delicious worms. */
-		
-		
-		
-		
-		System.out.println(stuffIFoundInTheYard.size()); // should be 2
+		for (int j = 0; j < stuffIFoundInTheYard.size(); j++) {
+			if (stuffIFoundInTheYard.get(j).type.equals("dirt")) {
+
+				stuffIFoundInTheYard.remove(j);
+			}
+		}
+		// System.out.println("2");
+		System.out.println("size = " + stuffIFoundInTheYard.size()); // should be 2
 
 		ArrayList<Character> truth = new ArrayList<Character>();
 		truth.add('c');
-		truth.add('a');
-		truth.add('#');
-		truth.add('l');
-		truth.add('#');
-		truth.add('i');
-		truth.add('f');
-		truth.add('o');
-		truth.add('#');
-		truth.add('r');
-		truth.add('n');
-		truth.add('#');
-		truth.add('i');
-		truth.add('#');
-		truth.add('a');
-		truth.add('#');
+		truth.add('u');
+		truth.add('t');
 		truth.add(' ');
-		truth.add('i');
+		truth.add('#');
+		truth.add('o');
+		truth.add('p');
+		truth.add('e');
+		truth.add('#');
+		truth.add('n');
+		truth.add(' ');
+		truth.add('c');
+		truth.add('#');
+		truth.add('a');
+		truth.add('#');
+		truth.add('t');
 		truth.add('#');
 		truth.add('s');
-		truth.add('#');
 		truth.add(' ');
-		truth.add('w');
+		truth.add('#');
+		truth.add('c');
 		truth.add('#');
 		truth.add('a');
-		truth.add('r');
-		truth.add('#');
+		truth.add('n');
+		truth.add(' ');
 		truth.add('m');
+		truth.add('#');
 		truth.add('e');
-		truth.add('r');
+		truth.add('o');
+		truth.add('w');
 		truth.add('#');
 		/* TODO 2: Remove the hash symbols and print out the truth. */
+		for (int i = 0; i < truth.size(); i++) {
+			if (truth.get(i) == '#') {
+				truth.remove(i);
 
-		
-		
+			}
+
+		}
+		for (int i = 0; i < truth.size(); i++) {
+			System.out.print(truth.get(i));
+		}
 	}
 }
