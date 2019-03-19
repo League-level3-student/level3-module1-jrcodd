@@ -3,9 +3,8 @@ package _01_IntroToArrayLists;
 import java.util.ArrayList;
 import java.util.Random;
 
-import javax.swing.JOptionPane;
-
 public class _05_LongChipCompetition {
+
 	/**
 	 * The Beatles are eating lunch and playing a game to see who has the longest
 	 * chip. (In England, french fries are called "chips".) * Find the Beatle with
@@ -15,10 +14,23 @@ public class _05_LongChipCompetition {
 	private ArrayList<Beatle> theBeatles = new ArrayList<Beatle>();
 
 	public static void main(String[] args) {
+		double longest = -10;
+		String longestBeatle = "no one!";
 		_05_LongChipCompetition lcc = new _05_LongChipCompetition();
-		
+		lcc.initializeBeatles();
+
+		for (int i = 0; i < lcc.getTheBand().size(); i++) {
+			for (int j = 0; j < lcc.getTheBand().get(i).getChips().size(); j++) {
+
+				if (lcc.getTheBand().get(i).getChips().get(j).getLength() > longest) {
+					longestBeatle = lcc.getTheBand().get(i).getName();
+					longest = lcc.getTheBand().get(i).getChips().get(j).getLength();
+				}
+			}
+		}
+		System.out.println("the one that is longest is " + longestBeatle + ". Their french fry was " + longest + " dm");
 	}
-	
+
 	private void initializeBeatles() {
 		Beatle george = new Beatle("George");
 		Beatle john = new Beatle("John");
@@ -29,8 +41,8 @@ public class _05_LongChipCompetition {
 		theBeatles.add(paul);
 		theBeatles.add(ringo);
 	}
-	
-	public ArrayList<Beatle> getTheBand(){
+
+	public ArrayList<Beatle> getTheBand() {
 		return theBeatles;
 	}
 }

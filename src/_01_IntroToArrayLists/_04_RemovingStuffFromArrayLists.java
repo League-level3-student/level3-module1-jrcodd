@@ -35,9 +35,8 @@ public class _04_RemovingStuffFromArrayLists {
 		System.out.println(stuffIFoundInTheYard.size());
 
 		/* TODO 1: Clean out the dirt but keep the delicious worms. */
-		for (int j = 0; j < stuffIFoundInTheYard.size(); j++) {
+		for (int j = stuffIFoundInTheYard.size() - 1; j > 0; j--) {
 			if (stuffIFoundInTheYard.get(j).type.equals("dirt")) {
-
 				stuffIFoundInTheYard.remove(j);
 			}
 		}
