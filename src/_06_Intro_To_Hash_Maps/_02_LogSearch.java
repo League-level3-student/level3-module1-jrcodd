@@ -8,13 +8,18 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 
 public class _02_LogSearch implements ActionListener {
 	JFrame f = new JFrame();
 	JPanel p = new JPanel();
+
 	JButton button1 = new JButton();
 	JButton button2 = new JButton();
 	JButton button3 = new JButton();
+	JButton button4 = new JButton();
+	JTextArea text = new JTextArea();
+	String viewList = "";
 	HashMap<Integer, String> IDs = new HashMap<Integer, String>();
 
 	public static void main(String[] args) {
@@ -46,16 +51,22 @@ public class _02_LogSearch implements ActionListener {
 	void JStuff() {
 		f.setVisible(true);
 		f.add(p);
+
 		p.add(button1);
 		p.add(button2);
 		p.add(button3);
+		p.add(button4);
+		p.add(text);
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		text.setEditable(false);
 		button1.setText("ADD");
 		button2.setText("SEARCH");
 		button3.setText("VIEW");
+		button4.setText("REMOVE");
 		button1.addActionListener(this);
 		button2.addActionListener(this);
 		button3.addActionListener(this);
+		button4.addActionListener(this);
 		f.pack();
 	}
 
@@ -67,16 +78,45 @@ public class _02_LogSearch implements ActionListener {
 			int id = Integer.parseInt(Sid);
 			String name = JOptionPane.showInputDialog("enter a name");
 			IDs.put(id, name);
-
+			text.setText("");
+			viewList = "";
+			f.repaint();
+			f.pack();
 		}
 		if (e.getSource() == button2) {
-
+			String searchedID = JOptionPane.showInputDialog(null, "Enter an ID to search");
+			if (IDs.containsKey(Integer.parseInt(searchedID))) {
+				text.setText("name: " + IDs.get(Integer.parseInt(searchedID)));
+			} else {
+				text.setText("ERROR 1244446543jtdk578936f");
+			}
+			f.repaint();
+			f.pack();
 		}
 		if (e.getSource() == button3) {
-			for (Integer i : IDs.keySet()) {
-				JOptionPane.showMessageDialog(f, "ID: " + i + " Name: " + IDs.get(i));
-
+			if (IDs.size() < 1) {
+				text.setText("");
+				viewList = "";
 			}
+			for (Integer i : IDs.keySet()) {
+				if (i > 1) {
+					viewList += "\n";
+				}
+				viewList += "ID: " + i + " Name: " + IDs.get(i);
+				text.setText(viewList);
+				f.repaint();
+				f.pack();
+			}
+
+		}
+		if (e.getSource() == button4) {
+			String removeID = JOptionPane.showInputDialog(null, "Enter an ID to remove");
+			IDs.remove(Integer.parseInt(removeID));
+			System.out.println(IDs.remove(Integer.parseInt(removeID)));
+			viewList = "";
+
+			f.repaint();
+			f.pack();
 
 		}
 	}
